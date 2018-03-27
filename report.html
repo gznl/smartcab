@@ -13143,11 +13143,11 @@ qxInWGZmZmZmZlXiBMvMzMzMzKxKnGCZmZmZmZlViRMsMzMzMzOzKnGCZWZmZmZmViX/H4L5j0Nv
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
 <ul>
-<li><p><strong>safety</strong>: The color of <code>light</code> is safety concerned, it relates to the traffic regulation violation. And the input of <code>right, left and oncoming</code> are also safety concerned, they are related to accident such as collision.</p>
+<li><p><strong>safety</strong>: The color of <code>light</code> is safety concerned, it relates to the traffic regulation violation. You should stop going forward and making left turn when the traffic light is red. And the input of <code>right, left and oncoming</code> are also safety concerned, because the direction of travel for other traffic can lead to collision.</p>
 </li>
-<li><p><strong>efficiency</strong>: The <code>waypoint</code> feature is efficiency concerned.</p>
+<li><p><strong>efficiency</strong>: The <code>waypoint</code> feature is efficiency concerned. This feature can make sure the smartcab reach the desination in the most efficient way.</p>
 </li>
-<li><p><code>Deadline</code> is not selected as feature in q-learning because it dose not contribute to either safety or efficiency.</p>
+<li><p><code>Deadline</code> is not selected as feature in q-learning because it dose not contribute to safety. Firstly, it may seems to be related to efficiency, it tells number of remaining actions to reach destination, however, the remaining actions is constantly variating, becuase the state of each intersection are changing all the time, I doubt the agent will not be able to learn this feature. Secondly, adding this feature will explode the state space due to curse of dimentionality. The deadline will have a size of (number of intersections multiplied by time steps per intersection), which will dramatically increase the state space.</p>
 </li>
 </ul>
 
@@ -16325,6 +16325,7 @@ HGCZmZmZmZnViQMsMzMzMzOzOvlvJafXJQgGOh4AAAAASUVORK5CYII=
 <p><strong>Answer:</strong></p>
 <ul>
 <li>Optimal policy are summarized as following:<ul>
+<li>If the lights are green, following the waypoint</li>
 <li>If the lights are red and waypoint is not <code>right</code>, choose None</li>
 <li>If lights are red and waypoint is <code>right</code>, turn right when left traffic is not <code>forward</code>; or going <code>forward</code> when left or right traffic is not <code>forward</code>; or turn left when oncoming is not <code>forward</code>.</li>
 </ul>
@@ -16374,7 +16375,7 @@ HGCZmZmZmZnViQMsMzMzMzOzOvlvJafXJQgGOh4AAAAASUVORK5CYII=
 </ul>
 </li>
 </ul>
-<p>Smartcab goes forward at green light, instead of turning to the waypoint (right), it is not correct.</p>
+<p>Smartcab goes forward at green light, instead of turning to the waypoint (right), it is not correct. I am not sure why the agent does not learn the suboptimal policy this time, it seems at green light, taking any action other than idling will recieve positive rewards, but it does not follow the waypoint.</p>
 
 </div>
 </div>
